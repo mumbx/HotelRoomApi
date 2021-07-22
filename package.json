@@ -1,0 +1,23 @@
+{
+  "name": "quartosapi",
+  "version": "1.0.0",
+  "description": "Api com rotas relacionadas aos quartos de um hotal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mumbx/HotelQuartos.git"
+  },
+  "author": "Antonio Marcos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mumbx/HotelQuartos/issues"
+  },
+  "homepage": "https://github.com/mumbx/HotelQuartos#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sqlite3": "^5.0.2"
+  }
+}
