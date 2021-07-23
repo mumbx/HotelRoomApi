@@ -2,7 +2,7 @@
   "name": "quartosapi",
   "version": "1.0.0",
   "description": "Api com rotas relacionadas aos quartos de um hotal",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
