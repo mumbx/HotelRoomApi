@@ -4,7 +4,9 @@
   "description": "Api com rotas relacionadas aos quartos de um hotal",
   "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/index.js",
+    "start": "node ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   },
   "homepage": "https://github.com/mumbx/HotelQuartos#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "sqlite3": "^5.0.2"
   }
