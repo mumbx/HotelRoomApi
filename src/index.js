@@ -1,17 +1,14 @@
 const express = require('express')
 const app = express()
-const bd = require('./infra/sqlite-db')
-const UserRoutes = require('./controllers/users-controller')
-const cors = require('cors')
+const bd = require('./bd/sqlite-db')
+const roomRoutes = require('./controllers/roomController')
 
-app.use(express())
+app.use(express.json())
 
-app.use(cors())
+roomRoutes(app, bd)
 
+app.listen(3015, ()=>{
 
-
-app.listen(3030, ()=>{
-
-    console.log("Servidor rodando na porta")
+    console.log("Servidor rodando na porta 3015")
 
 })

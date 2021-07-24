@@ -2,71 +2,72 @@ const Room = require('../models/roomModel')
 const RoomContext = require('../Context/RoomContext')
 
  module.exports = (app, bd)=>{
-   let userContext = new UserContext(bd)
+
+   let roomContext = new RoomContext(bd)
 
    app.get('/room', async (req, res)=>{ 
 
      try{
-       let rows = await userContext.getAllUsers()
-       res.json({Results:rows})
+       let rooms = await roomContext.getAllRooms()       
+       res.json({result:rooms})
      }
      catch(e){
        res.json({error:e.message})
      }      
 
    })
- 
-   app.get('/users/:id', async (req, res)=>{
-     
-     try{
-       let rows = await userContext.getUserByid(req.params.id)
-       res.json({Results:rows})
-     }
-     catch(e){
-       res.json({error:'User not found or invalid parameters'})
-     }  
-     
- 
-   })
- 
-   app.delete('/users/:id', async (req, res)=>{
-     
-     try{
-       let action = await userContext.deleteUser(req.params.id)
-       res.json({Action:action})
-     }catch(e){
-       res.json({error:'User not deleted or invalids parameters'})
-     }
-    
- 
-   }) 
- 
-  app.post('/users', async (req, res)=>{
-
-     try{
-       const user = new User(req.body.name, req.body.email, req.body.password)  
-       const values = [user.name, user.email, user.password]
-       let created = await userContext.createUser(values, user)
-       res.json(created)
-       
-     }catch(e){
-       res.json({error:e.message})
-     }     
-     
-   })
    
-   app.put('/users/:id', async (req, res)=>{
+   app.get('/room/:id', async (req, res)=>{ 
 
-     let id = req.params.id
-     let {name, email, password} = req.body
+    try{
+      let room = await roomContext.getRoomById(req.params.id)      
+      res.json({result:room})
+    }
+    catch(e){
+      res.json({error:e.message})
+    }      
 
-     try{        
-       let update = await userContext.updateUser(name, email, password, id)
-       res.json(update)
-     }catch(e){
-       res.json({error:e.message})
-     }    
+  })
+   
+   app.post('/room/create', async (req, res)=>{ 
 
-   }) 
- 
+    try{
+      const {roomNumber, isOcupied, roomType} = req.body      
+      const room = new Room(roomNumber, isOcupied, roomType)
+      let roomCreated = await roomContext.createRoom(room)
+      res.json(roomCreated)
+    }
+    catch(e){
+      res.json({error:e.message})
+    }      
+
+  })
+
+  app.delete('/room/delete/:id', async (req, res)=>{ 
+
+    try{
+      let id = req.params.id
+      let isDeleted = await roomContext.deleteRoom(id)
+      res.json(isDeleted)
+    }
+    catch(e){
+      res.json({error:e.message})
+    }      
+
+  })
+
+  app.put('/room/update/:id', async (req, res)=>{ 
+
+    try{
+      let id = req.params.id
+      let {roomNumber, isOcupied, roomType} = req.body
+      let isUpdated = await roomContext.updateRoom(roomNumber, isOcupied, roomType, id)
+      res.json(isUpdated)
+    }
+    catch(e){
+      res.json({error:e.message})
+    }      
+
+  })
+   
  }
