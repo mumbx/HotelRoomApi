@@ -11,8 +11,8 @@ app.use(express.json())
 
 roomRoutes(app, bd)
 
-app.listen(porta, ()=>{
+app.listen(process.env.PORT||porta, ()=>{
 
-    console.log(`Servidor rodando na porta ${porta}`)
+    console.log(`Servidor rodando na porta ${process.env.PORT||porta}`)
 
 })
