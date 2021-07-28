@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const bd = require('./bd/sqlite-db')
-const roomRoutes = require('./controllers/roomController')
+const roomRoutes = require('./Controllers/roomController')
 const cors = require('cors')
 const porta = 3015
 
